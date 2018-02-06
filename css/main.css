@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.videoWrapper {
+  width: 100vw;
+  height: 54.562vw;
+  max-width: 100%;
+}
+
+.transcript {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+p {
+  font-family: 'Nunito', sans-serif;
+  color: #383938;
+  padding-top: 20px;
+}
+
+span:hover {
+  cursor: pointer;
+  color: #ffab40;
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+  .videoWrapper {
+    width: 60vw;
+    height: 33.75vw;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .transcript {
+    max-width: 60%;
+  }
+}
