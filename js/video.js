@@ -7,6 +7,7 @@ const markers = [0.24, 4.13, 7.535, 11.27, 13.96, 17.94, 22.37, 26.88, 32.1, 34.
 function resetHighlights() {
   //select all spans
   let allSpans = document.querySelectorAll('span');
+
   //if span is highlighted yellow then set its colour to grey
   for (i = 0; i < allSpans.length; i += 1) {
     let indivSpan = allSpans[i];
@@ -28,6 +29,8 @@ $('video').mediaelementplayer( {
 
       //find out current time when vid hits a marker
       const currentMarker = video.currentTime;
+      console.log(currentMarker);
+
       for (j = 0; j < markers.length; j += 1) {
         let markerTime = markers[j];
         //markers seem to change their time by a few milliseconds each time so work out the position of the marker in the array so it can be matched with a transcript span id
