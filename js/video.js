@@ -1,9 +1,3 @@
-const video = document.querySelector('video');
-
-//add markers to the progress bar
-const markers = [0.24, 4.13, 7.535, 11.27, 13.96, 17.94, 22.37, 26.88, 32.1, 34.73, 39.43, 42.35, 46.3, 49.27, 53.76, 57.78];
-
-
 function resetHighlights() {
   //select all spans
   let allSpans = document.querySelectorAll('span');
@@ -17,6 +11,10 @@ function resetHighlights() {
   }
 }
 
+//add markers to the progress bar
+const markers = [0.24, 4.13, 7.535, 11.27, 13.96, 17.94, 22.37, 26.88, 32.1, 34.73, 39.43, 42.35, 46.3, 49.27, 53.76, 57.78];
+
+
 // video controls
 $('video').mediaelementplayer( {
   features: ['playpause', 'current', 'progress', 'duration', 'volume', 'fullscreen', 'markers'],
@@ -27,9 +25,12 @@ $('video').mediaelementplayer( {
       //remove prev highlight
       resetHighlights();
 
-      //find out current time when vid hits a marker
+      //in safari - currentTime only logged properly when const video inside function
+      const video = document.querySelector('video');
+
+      // find out current time when vid hits a marker
+
       const currentMarker = video.currentTime;
-      console.log(currentMarker);
 
       for (j = 0; j < markers.length; j += 1) {
         let markerTime = markers[j];
@@ -45,6 +46,9 @@ $('video').mediaelementplayer( {
 
     }
 });
+
+const video = document.querySelector('video');
+
 
 video.onseeked = function() {
   resetHighlights();
@@ -74,18 +78,20 @@ video.onseeked = function() {
 }
 
 
-//click on a span in transcript and jump to that time cue in video
+// click on a span in transcript and jump to that time cue in video
 
 document.addEventListener('click', function(e) {
   if (e.target.className == 'transcript-line') {
     //get the id of the clicked span
     const id = e.target.id;
+    console.log(id);
     //split the id to get the number
     const split = id.split("n");
     //store just the number
     const arrayNumber = split[1];
     //fimd out the time marker associated with that span
     const newTime = markers[arrayNumber];
+    console.log(newTime);
     //set the video to that marker
     video.currentTime = newTime;
     //if video had been paused, or hadn't started yet - play on clicking the transcript
