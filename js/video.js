@@ -5,8 +5,6 @@ $('video').mediaelementplayer( {
 });
 
 const video = document.querySelector('video');
-const markers = [0.24, 4.13, 7.535, 11.27, 13.96, 17.94, 22.37, 26.88, 32.1, 34.73, 39.43, 42.35, 46.3, 49.27, 53.76, 57.78];
-
 const transcriptLines = document.getElementsByClassName('transcript-line');
 
 //listen for the video playing
